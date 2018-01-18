@@ -88,7 +88,7 @@ logFolders(genref)
 
 def logFolders(genref){
   
-  File file = new File("files/folders.txt")
+  File file = new File("../folders.txt")
   
   file.text = ''
  

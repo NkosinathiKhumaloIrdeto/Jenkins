@@ -13,8 +13,8 @@ public class NoProcessedException extends Exception{
 Map<String, Integer> aMap = new HashMap<String, Integer>();
 
 def newline = System.getProperty("line.separator")
-def logPaths = new File("files/folders.txt")
-def checkText = new File("files/folders.txt").getText()
+def logPaths = new File("../folders.txt")
+def checkText = new File("../folders.txt").getText()
 
 //don't proceed if file is empty
 if (!(checkText.length() > 0)) {
