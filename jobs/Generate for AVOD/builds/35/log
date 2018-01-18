@@ -1,0 +1,16 @@
+Started by timer
+Building in workspace C:\Program Files (x86)\Jenkins\workspace\AVOD\Generate for AVOD
+[Generate for AVOD] $ "C:\Program Files (x86)\Jenkins\tools\hudson.plugins.groovy.GroovyInstallation\Groovy1.5.4\bin\groovy.bat" "C:\Program Files (x86)\Jenkins\workspace\AVOD\Generate for AVOD\hudson4966570347405706006.groovy"
+
+ Genref: 2488170 uid: BS725542ON
+
+ Update xml...
+
+ Done updating xml...
+
+ Dropping source...
+
+ Dropping source...
+//172.16.103.220/Encoder_Area/Ardome/AUTOMATION_SYSTEM/2488170_BS725542ON.mxf
+Triggering a new build of [8mha:////4C8rD+Gz1sQJoNiQD75TzayCSjaxoAvLxlUvYnUOMU4qAAAAoh+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyREgYZ/az8JH3HMH8XMCM4NS8lIL+4JB4sAgABCxIZ0QAAAA==[0mAVOD » SendPost_AVOD
+Finished: SUCCESS

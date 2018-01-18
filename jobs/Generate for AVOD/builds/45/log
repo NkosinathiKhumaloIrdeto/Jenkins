@@ -1,0 +1,18 @@
+Started by timer
+Building in workspace C:\Program Files (x86)\Jenkins\workspace\AVOD\Generate for AVOD
+[Generate for AVOD] $ "C:\Program Files (x86)\Jenkins\tools\hudson.plugins.groovy.GroovyInstallation\Groovy1.5.4\bin\groovy.bat" "C:\Program Files (x86)\Jenkins\workspace\AVOD\Generate for AVOD\hudson992165019354353030.groovy"
+
+ Genref: 9101533 uid: SH167181GQ
+
+ Update xml...
+
+ Done updating xml...
+
+ Dropping source...
+Caught: java.io.FileNotFoundException: \\172.16.103.220\Encoder_Area\Ardome\Automation files\automation_ssm.mxf (The specified network name is no longer available)
+java.io.FileNotFoundException: \\172.16.103.220\Encoder_Area\Ardome\Automation files\automation_ssm.mxf (The specified network name is no longer available)
+	at hudson992165019354353030.dropVideo(hudson992165019354353030.groovy:74)
+	at hudson992165019354353030$dropVideo$0.callCurrent(Unknown Source)
+	at hudson992165019354353030.run(hudson992165019354353030.groovy:27)
+Build step 'Execute Groovy script' marked build as failure
+Finished: FAILURE

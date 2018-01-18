@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H/40 * * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.groovy.Groovy plugin="groovy@2.0">
+      <scriptSource class="hudson.plugins.groovy.StringScriptSource">
+        <command>//generate and convert value to string
+def genref =  String.valueOf(((int)((Math.random()*9999999)+1)))
+
+//uiD setup
+def alpha = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;, 
+&quot;h&quot;, &quot;i&quot;, &quot;j&quot;, &quot;k&quot;, &quot;l&quot;, &quot;m&quot;, &quot;n&quot;, &quot;o&quot;, &quot;p&quot;, 
+&quot;q&quot;, &quot;r&quot;, &quot;s&quot;, &quot;t&quot;, &quot;u&quot;, &quot;v&quot;, &quot;w&quot;, &quot;x&quot;, &quot;y&quot;, &quot;z&quot;] as String[]
+
+def alphaKeys = new String[4]
+
+def z = 0
+
+for(def i = 0; i &lt; 4; i++){
+	
+	z = ((int)((Math.random()*26)))
+
+	alphaKeys[i] = alpha[z].toUpperCase()
+	
+}
+	
+def uid = alphaKeys[0] + alphaKeys[1] + String.valueOf(((int)((Math.random()*99999999)+1))).substring(0, 6) + alphaKeys[2] + alphaKeys[3]
+
+println &quot;\n Genref: &quot; + genref + &quot; &quot; + &quot;uid: &quot; + uid 
+
+updateXML(genref, uid)
+
+dropVideo(genref, uid, &quot;automation_ssm.mxf&quot;)
+
+
+/*update fields mappers in xml*/
+def updateXML(genref, uid){
+  
+  println &quot;\n Update xml...&quot;
+	
+  //read file:
+def xmlContents = new File(&quot;C:/Program Files (x86)/Jenkins/jobs/AVOD/jobs/Generate for AVOD/collection.json&quot;).getText()
+
+//where to put new file
+def networkPath =  &quot;C:/Program Files (x86)/Jenkins/jobs/AVOD/jobs/Generate for AVOD/collection1.json&quot;
+
+//put values in array
+def vals = [genref,uid]
+
+//log.info vals
+
+def keys = [&quot;{#Project#AVODgenref}&quot;,&quot;{#Project#AVODuid}&quot;]
+
+def key = keys[0]
+
+for(def i = 0; i &lt; 2; ++i){
+	
+	xmlContents = xmlContents.replace(keys[i],vals[i]);	
+	
+}
+
+File file = new File(networkPath)
+
+file.text = xmlContents
+  
+  println &quot;\n Done updating xml...&quot;
+  
+}
+
+def dropVideo(def genref, def uid, def name){
+  
+  println &quot;\n Dropping source...&quot;
+ 
+def soureFile = &quot;//172.16.103.220/Encoder_Area/Ardome/Automation files/&quot; + name
+def destFile = &quot;//172.16.103.220/Encoder_Area/Ardome/AUTOMATION_SYSTEM/&quot;
+  
+def vidName = destFile + genref + &quot;_&quot; + uid + &quot;.mxf&quot;
+
+  
+def srcStream = new File(soureFile).newDataInputStream()
+def dstStream = new File(vidName).newDataOutputStream()
+dstStream &lt;&lt; srcStream
+srcStream.close()
+dstStream.close()
+
+println &quot;\n Dropping source...&quot; + &quot;\n&quot; + vidName
+  
+}
+</command>
+      </scriptSource>
+      <groovyName>Groovy1.5.4</groovyName>
+      <parameters></parameters>
+      <scriptParameters></scriptParameters>
+      <properties></properties>
+      <javaOpts></javaOpts>
+      <classPath></classPath>
+    </hudson.plugins.groovy.Groovy>
+  </builders>
+  <publishers>
+    <hudson.tasks.BuildTrigger>
+      <childProjects>SendPost_AVOD</childProjects>
+      <threshold>
+        <name>SUCCESS</name>
+        <ordinal>0</ordinal>
+        <color>BLUE</color>
+        <completeBuild>true</completeBuild>
+      </threshold>
+    </hudson.tasks.BuildTrigger>
+  </publishers>
+  <buildWrappers/>
+</project>
