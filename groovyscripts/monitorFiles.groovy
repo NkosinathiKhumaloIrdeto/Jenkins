@@ -70,7 +70,8 @@ println ""
 if(a1 > 0){println "EXP - YES"} else {println "EXP - X"}
 if(a2 > 0){println "NAN - YES"} else {println "NAN - X"}
 println ""
-if((a1 >= 0) && (a2 >= 0)) {
+
+if((a1 > 0) && (a2 > 0)) {
   
   logPaths.text = ''
   
