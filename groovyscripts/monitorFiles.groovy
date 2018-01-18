@@ -16,6 +16,7 @@ def newline = System.getProperty("line.separator")
 def logPaths = new File("files/folders.txt")
 def checkText = new File("files/folders.txt").getText()
 
+//don't proceed if file is empty
 if (!(checkText.length() > 0)) {
   
   println "Directory file not populated yet... aborting"
