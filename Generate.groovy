@@ -1,5 +1,5 @@
 //generate and convert value to string
-def genref =  String.valueOf(((int)((Math.random()*9999999)+1)))
+def genref =  "AD" + String.valueOf(((int)((Math.random()*9999999)+1)))
 
 //uiD setup
 def alpha = ["a", "b", "c", "d", "e", "f", "g", 
