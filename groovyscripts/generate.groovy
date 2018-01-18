@@ -37,10 +37,10 @@ def updateXML(genref, uid){
   println "\n Update xml..."
 	
   //read file:
-def xmlContents = new File("collection.json").getText()
+def xmlContents = new File("collections/collection.json").getText()
 
 //where to put new file
-def networkPath =  "collection1.json"
+def networkPath =  "collections/collection1.json"
 
 //put values in array
 def vals = [genref,uid]
@@ -69,18 +69,31 @@ def dropVideo(def genref, def uid, def name){
   
   println "\n Dropping source..."
  
-def soureFile = "//172.16.103.220/Encoder_Area/Ardome/Automation files/" + name
-def destFile = "//172.16.103.220/Encoder_Area/Ardome/AUTOMATION_SYSTEM/"
+  def soureFile = "//172.16.103.220/Encoder_Area/Ardome/Automation files/" + name
+  def destFile = "//172.16.103.220/Encoder_Area/Ardome/AUTOMATION_SYSTEM/"
   
-def vidName = destFile + genref + "_" + uid + ".mxf"
+  def vidName = destFile + genref + "_" + uid + ".mxf"
 
   
-def srcStream = new File(soureFile).newDataInputStream()
-def dstStream = new File(vidName).newDataOutputStream()
-dstStream << srcStream
-srcStream.close()
-dstStream.close()
+  def srcStream = new File(soureFile).newDataInputStream()
+  def dstStream = new File(vidName).newDataOutputStream()
+  dstStream << srcStream
+  srcStream.close()
+  dstStream.close()
 
-println "\n Dropping source..." + "\n" + vidName
+  println "\n Done dropping source..." + "\n" + vidName
+}
+
+logFolders(genref)
+
+def logFolders(genref){
+  
+  File file = new File("files/folders.txt")
+  
+  file.text = ''
+ 
+  file << genref + "_" + "13303\n" +  genref + "_" + "13403\n"
   
 }
+  
+
