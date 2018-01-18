@@ -26,6 +26,10 @@ updateXML(genref, uid)
 
 dropVideo(genref, uid, "automation_ssm.mxf")
 
+println ""
+println "*******"
+println "Genref: " + genref + " Uid: " + uid
+println "*******"
 
 /*update fields mappers in xml*/
 def updateXML(genref, uid){
